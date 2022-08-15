@@ -1,0 +1,57 @@
+﻿@model AdSanare.Entities.Paciente
+@section Scripts {
+    <script type="text/javascript">
+        $("#btnBuscarDocumentacion").on("click", function () {
+            $("#listadoCorrespondiente").html("<div class='col-md-12'><div class='form-group'><br/><label class='control-label'>Buscando...</label></div></div>");
+            $.ajax({
+                url: "/Paciente/_ListaPacientes",
+                data: {
+                    Nombre: $("#Nombre").val(),
+                    Apellido: $("#Apellido").val(),
+                    Documento: $("#Documento").val()
+                },
+                type: "GET",
+                success: function (data) {
+                    $("#listadoCorrespondiente").html(data);
+                }
+            });
+        });
+    </script>
+}
+<br />
+<div class="card card-maroon">
+    <div class="card-header">
+        <h3 class="card-title">Buscador</h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+        </div>
+    </div>
+    <div class="card-body" style="display: block;">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" placeholder="Ingrese el Nombre del Paciente" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Apellido" class="control-label"></label>
+                    <input asp-for="Apellido" class="form-control" placeholder="Ingrese el Apellido del Paciente" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Documento" class="control-label"></label>
+                    <input asp-for="Documento" class="form-control" placeholder="Ingrese el Numero de Documento del Paciente" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+            <div class="col-md-3">
+                <button type="button" data-card-widget="collapse" class="btn btn-block btn-primary" id="btnBuscarDocumentacion"><i class="fa fa-search">Buscar</i></button>
+            </div>
+    </div>
+ </div>
+<div id="listadoCorrespondiente"></div>

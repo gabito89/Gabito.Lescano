@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "AdSanareCoreDbContextConnection"
+    },
+    "appInsights1": {
+      "type": "appInsights",
+      "connectionId": "APPINSIGHTS_INSTRUMENTATIONKEY"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "AdSanare"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "AdSanareUsuarios"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+﻿@model AdSanare.Entities.Paciente
+<div class="card card-maroon">
+    <div class="card-header">
+        <h3 class="card-title">Detalle de Paciente</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Nombre"></label>
+                    <input disabled class="form-control" asp-for="Nombre">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Apellido"></label>
+                    <input disabled class="form-control" asp-for="Apellido">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Documento"></label>
+                    <input disabled class="form-control" asp-for="Documento">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="FechaNacimiento"></label>
+                    <input disabled class="form-control" asp-for="FechaNacimiento">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Sexo"></label>
+                    <input disabled class="form-control" asp-for="Sexo">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="EstadoCivil"></label>
+                    <input disabled class="form-control" asp-for="EstadoCivil">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Telefono"></label>
+                    <input disabled class="form-control" asp-for="Telefono">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ObraSocial.Descripcion"></label>
+                    <input disabled class="form-control" asp-for="ObraSocial.Descripcion">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="ObraSocialNumero"></label>
+                    <input disabled class="form-control" asp-for="ObraSocialNumero">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Domicilio.Calle"></label>
+                    <input disabled class="form-control" asp-for="Domicilio.Calle">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Domicilio.Localidad"></label>
+                    <input disabled class="form-control" asp-for="Domicilio.Localidad">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Domicilio.Provincia"></label>
+                    <input disabled class="form-control" asp-for="Domicilio.Provincia">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+    </div>
+</div>

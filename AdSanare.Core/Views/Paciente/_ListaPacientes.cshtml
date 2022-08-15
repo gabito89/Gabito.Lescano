@@ -1,0 +1,80 @@
+﻿@model List<AdSanare.Entities.Paciente>
+<div class="card card-maroon">
+    <div class="card-header">
+        <h3 class="card-title">Lista de Pacientes</h3>
+        <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <div class="input-group input-group-sm pull-right">
+                    <a class="btn btn-success" asp-controller="Paciente" asp-action="Create" title="Agregar Paciente"><i class="fas fa-plus">Nuevo</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table table-bordered table-hover" id="listadoPacientes">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Apellido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Documento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.FechaNacimiento)
+                        </td>
+                        <td align="center">
+                            <a href="#" onclick="VerPaciente(@p.Id)" data-toggle="modal" data-target="#detalle" title="Ver Paciente" class="btn btn-info btn-xs"><i class="fa fa-search"></i></a>
+                            <a href="@Url.Action("Edit", "Paciente", new { id = p.Id})" title="Editar Paciente" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                            <a href="@Url.Action("Create", "ExamenComplementario", new { Documento = p.Documento})" title="Cargar Examen Complementario" class="btn btn-warning btn-xs"><i class="fa fa-file"></i></a>
+                            <a href="@Url.Action("Create", "Ingreso", new { Documento = p.Documento})" title="Cargar Ingreso" class="btn btn-info btn-xs"><i class="fa fa-file-alt"></i></a>
+                            <a href="@Url.Action("Delete", "Paciente", new { id = p.Id })" title="Borrar Paciente" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="detalle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body" id="detalleBody">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#listadoPacientes').DataTable({
+            "columnDefs": [{
+                "searchable": false,
+                "orderable": false,
+                "targets": 4
+            }],
+            "language": {
+                'url': '@Url.Content("~/lib/arg.json")'
+            }
+        });
+    });
+    function VerPaciente(Id) {
+        var url = "/Paciente/Details?id=" + Id;
+        $("#detalleBody").load(url, function () {
+            $("#detalle").modal("show");
+        })
+    }
+</script>

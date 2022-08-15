@@ -1,0 +1,100 @@
+﻿@using static AdSanare.Core.Helper.NavigationIndicatorHelper;
+@inject RoleManager<IdentityRole> roleManager;
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="~/Home" class="brand-link">
+        <img src="~/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light">AdSanare</span>
+    </a>
+    <div class="sidebar">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="info">
+                    <a href="#" class="d-block">Bienvenido, @User.Identity.Name </a>
+                </div>
+            </div>
+        }        
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item ">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link @Url.MakeActiveClass("home","index")">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Inicio
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a asp-controller="Paciente" asp-action="Index" class="nav-link @Url.MakeActiveClass("paciente","index")">
+                            <i class="fas fa-user-nurse"></i>
+                            <p>
+                                Pacientes
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Historia Clinica
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+                                <a asp-controller="Ingreso" asp-action="Index" class="nav-link @Url.MakeActiveClass("ingreso","index")">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Ingresos</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="ExamenComplementario" asp-action="Index" class="nav-link @Url.MakeActiveClass("examencomplementario","index")">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Estudios Complementarios</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a asp-controller="Servicio" asp-action="Index" class="nav-link @Url.MakeActiveClass("servicio","index")">
+                            <i class="fas fa-address-card"></i>
+                            <p>
+                                Servicios
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a asp-controller="ObraSocial" asp-action="Index" class="nav-link @Url.MakeActiveClass("obrasocial","index")">
+                            <i class="fas fa-medkit"></i>
+                            <p>
+                                Obra Social
+                            </p>
+                        </a>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item ">
+                            <a asp-controller="Administration" asp-action="ListRoles" class="nav-link @Url.MakeActiveClass("administration","listroles")">
+                                <i class="fas fa-user-tag"></i>
+                                <p>
+                                    Roles
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a asp-controller="Usuarios" asp-action="Index" class="nav-link @Url.MakeActiveClass("usuarios","index")">
+                                <i class="fas fa-users-cog"></i>
+                                <p>
+                                    Usuarios
+                                </p>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</aside>

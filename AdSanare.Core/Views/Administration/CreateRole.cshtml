@@ -1,0 +1,33 @@
+﻿@model CreateRoleViewModel
+@{
+
+}
+</br>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="card col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Crear Nuevo Rol</h3>
+            </div>
+            <form asp-antiforgery="true" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="RoleName"></label>
+                        <input class="form-control" asp-for="RoleName">
+                        <span class="text-danger" asp-validation-for="RoleName"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
